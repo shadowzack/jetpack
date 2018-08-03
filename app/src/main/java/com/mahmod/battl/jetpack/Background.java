@@ -3,12 +3,12 @@ package com.mahmod.battl.jetpack;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class BackGround {
+public class Background {
 
     private Bitmap image;
     private int x, y, dx;
 
-    public BackGround(Bitmap res)
+    public Background(Bitmap res)
     {
         image = res;
         dx = GamePanel.MOVESPEED;
@@ -28,5 +28,4 @@ public class BackGround {
             canvas.drawBitmap(image, x+GamePanel.WIDTH, y, null);
         }
     }
-
 }

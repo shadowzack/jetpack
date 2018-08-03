@@ -2,25 +2,14 @@ package com.mahmod.battl.jetpack;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 
-public class Player extends GameCoordinates implements GameObject {
+public class Player extends  GameObject {
     private Bitmap bitmap;
     private int score;
     private boolean up;
     private boolean playing;
-    private Animation animation = new Animation();
+    private FramesAnimation framesAnimation = new FramesAnimation();
     private long startTime;
-
-
-    private Rect rect;
-    private int color;
-
-    public Rect getRectangle(){
-        return rect;
-    }
 
     public Player(Bitmap image, int w, int h, int numberOfFrames) {
         x = 100;
@@ -37,12 +26,22 @@ public class Player extends GameCoordinates implements GameObject {
             playerImage[i] = Bitmap.createBitmap(bitmap, i*width, 0, width, height);
         }
 
-        animation.setFrames(playerImage);
-        animation.setDelay(10);
+        framesAnimation.setFrames(playerImage);
+        framesAnimation.setDelay(10);
         startTime = System.nanoTime();
+    }
+    //getters
+    public int getScore() {
+        return (this.score * 3);
+    }
+    public boolean getPlaying() {
+        return this.playing;
     }
 
     //setters
+    public void setScore(int score) {
+        this.score = score;
+    }
     public void setUp(boolean up) {
         this.up = up;
     }
@@ -50,25 +49,15 @@ public class Player extends GameCoordinates implements GameObject {
         this.playing = playing;
     }
 
-    public void resetDY() {
+
+    public void resetDYA() {
         dy = 0;
     }
     public void resetScore() {
         this.score = 0;
     }
-    //getters
-    public int getScore() {
-        return (this.score * 3);
-    }
-    public void setScore(int score) {
-        this.score = score;
-    }
-    public boolean getPlaying() {
-        return this.playing;
-    }
 
 
-    @Override
     public void update() {
         long elapsed = (System.nanoTime() - startTime) / 1000000;
         if(elapsed > 100) {
@@ -76,7 +65,7 @@ public class Player extends GameCoordinates implements GameObject {
             startTime = System.nanoTime();
         }
 
-        animation.update();
+        framesAnimation.update();
 
         if(up) {
             dy -= 1;
@@ -94,16 +83,8 @@ public class Player extends GameCoordinates implements GameObject {
 
         y += dy*0.4;
     }
-
-    @Override
     public void draw(Canvas canvas) {
-
-        canvas.drawBitmap(animation.getImage(), x, y, null);
+        canvas.drawBitmap(framesAnimation.getImage(), x, y, null);
     }
 
-
-
-   /* public void update(Point point){
-        rect.set(point.x - rect.width()/2,point.y - rect.height()/2,point.x + rect.width()/2,point.y + rect.height()/2);
-    }*/
 }

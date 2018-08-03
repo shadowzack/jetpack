@@ -2,7 +2,7 @@ package com.mahmod.battl.jetpack;
 
 import android.graphics.Bitmap;
 
-public class Animation {
+public class FramesAnimation {
     private Bitmap[] frames;
     private int currentFrame;
     private long startTime;
@@ -21,6 +21,7 @@ public class Animation {
     public void setFrame(int i) {
         currentFrame = i;
     }
+
     //getters
     public Bitmap getImage() {
         return frames[currentFrame];
@@ -31,7 +32,6 @@ public class Animation {
     public boolean hasPlayed() {
         return playedOnce;
     }
-
 
     public void update() {
         long elapsed = (System.nanoTime() - startTime) / 1000000;
@@ -46,6 +46,8 @@ public class Animation {
             playedOnce = true;
         }
     }
+
+
 
 
 }
