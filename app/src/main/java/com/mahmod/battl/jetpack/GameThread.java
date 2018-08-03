@@ -3,7 +3,8 @@ package com.mahmod.battl.jetpack;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class MainThread extends Thread {
+public class GameThread extends Thread {
+    //game frames per second
     public static final int FPS=60;
     public double averageFPS;
     private SurfaceHolder surfaceHolder;
@@ -14,7 +15,8 @@ public class MainThread extends Thread {
     public void setRunning(boolean running){
         this.running=running;
     }
-    public MainThread(SurfaceHolder surfaceHolder,GamePanel gamePanel){
+
+    public GameThread(SurfaceHolder surfaceHolder, GamePanel gamePanel){
         super();
         this.gamePanel=gamePanel;
         this.surfaceHolder=surfaceHolder;
@@ -24,7 +26,7 @@ public class MainThread extends Thread {
         long startTime;
         long timeMillis =1000/FPS;
         long waitTime;
-        int frameCount=0;
+        int  frameCount=0;
         long totalTime=0;
         long targetTime=1000/FPS;
 
@@ -33,6 +35,7 @@ public class MainThread extends Thread {
             canvas =null;
 
             try {
+                //try to lock canvas
                 canvas=this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder){
                     this.gamePanel.update();
