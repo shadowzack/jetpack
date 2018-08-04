@@ -7,18 +7,20 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
-    public static final int WIDTH = 856;
-    public static final int HEIGHT = 480;
-    public static final int MOVESPEED = -5;
+    public static int WIDTH = 856;
+    public static int HEIGHT = 480;
+    public static final int MOVESPEED = -8;
     private long missileStartTime;
     private GameThread thread;
     private Background bg;
@@ -40,13 +42,16 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         setFocusable(true);
         this.prefManager = new SharedPreferencesManager(getContext());
         this.best = prefManager.get(SharedPreferencesManager.PREF_BEST_SCORE);
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        WIDTH = displayMetrics.widthPixels;
+        HEIGHT = displayMetrics.heightPixels;
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder){
 
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.bg));
-        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.jet), 99, 66, 3);
+        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.jet), 199, 99, 1);
         rockets = new ArrayList<Rocket>();
         missileStartTime = System.nanoTime();
         thread = new GameThread(getHolder(), this);
@@ -128,7 +133,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 missileStartTime = System.nanoTime();
             }
 
-            if(player.getY() <= -60 || player.getY() >= 500) {
+            if(player.getY() <= -50 || player.getY() >= HEIGHT) {
                 System.out.println("The player crossed the borders" + player.getY());
                 try {
                     Thread.sleep(750);
@@ -249,11 +254,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
-        paint.setTextSize(30);
+        paint.setTextSize(40);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
 
         canvas.drawText("DISTANCE: " + player.getScore(), 10, HEIGHT - 10, paint);
-        canvas.drawText("BEST: " + best, WIDTH - 215, HEIGHT - 10, paint);
+
 
         if(!player.getPlaying())
         {
@@ -261,14 +266,21 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             paint1.setColor(Color.WHITE);
             paint1.setTextSize(40);
             paint1.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            canvas.drawText("JETPACK", WIDTH / 2 - 50, HEIGHT / 2, paint1);
+            canvas.drawText("JETPACK:SPACE MARINE", WIDTH / 2-200 , HEIGHT / 2, paint1);
+
+            Paint paint3 = new Paint();
+            paint3.setColor(Color.WHITE);
+            paint3.setTextSize(40);
+            paint3.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+           canvas.drawText("MAIN MENU", WIDTH -240,  HEIGHT /9  , paint3);
+
+           canvas.drawText("BEST: " + best, WIDTH-240, HEIGHT - 10, paint3);
 
             Paint paint2 = new Paint();
             paint2.setColor(Color.WHITE);
-            paint2.setTextSize(20);
+            paint2.setTextSize(30);
             paint2.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            canvas.drawText("PRESS AND HOLD TO GO UP", WIDTH/2-50, HEIGHT/2 + 30, paint2);
-            canvas.drawText("RELEASE TO GO DOWN", WIDTH/2-50, HEIGHT/2 + 60, paint2);
+            canvas.drawText("PRESS AND HOLD TO GO UP", WIDTH/2-200, HEIGHT/2+10 + 30, paint2);
         }
     }
 

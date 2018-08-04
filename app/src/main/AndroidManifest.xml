@@ -10,13 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="landscape"
+            android:label="jet pack"
+            />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="settings"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".AboutActivity"
+            android:label="About"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape"/>
+
     </application>
 
 </manifest>

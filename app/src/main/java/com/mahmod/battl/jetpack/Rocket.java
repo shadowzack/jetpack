@@ -18,23 +18,23 @@ public class Rocket extends GameObject {
         width = w;
         height = h;
         score = s;
-
-        speed = 7 + (int) (rand.nextDouble()*score / 30);
+        //with better score the game becomes harder
+        speed = 11 + (int) (rand.nextDouble()*score / 30);
 
         //cap asteroid speed
-        if(speed > 10) {
-            speed = 10;
+        if(speed > 18) {
+            speed = 18;
         }
 
         Bitmap[] image = new Bitmap[numberOfFrames];
         bitmap = img;
 
         for(int i = 0; i < image.length; i++) {
-            image[i] = Bitmap.createBitmap(bitmap, 0, i*height, width, height);
+            image[i] = Bitmap.createBitmap(bitmap, 0, i*height, width, height*2);
         }
 
         framesAnimation.setFrames(image);
-        framesAnimation.setDelay(100-speed);
+        framesAnimation.setDelay(10000-speed);
     }
 
     public void update() {

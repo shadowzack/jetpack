@@ -23,11 +23,11 @@ public class Player extends  GameObject {
         bitmap = image;
 
         for(int i = 0; i < playerImage.length; i++) {
-            playerImage[i] = Bitmap.createBitmap(bitmap, i*width, 0, width, height);
+            playerImage[i] = Bitmap.createBitmap(bitmap, 200, 0, width, height);
         }
 
         framesAnimation.setFrames(playerImage);
-        framesAnimation.setDelay(10);
+        framesAnimation.setDelay(100000);
         startTime = System.nanoTime();
     }
     //getters
