@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "149413174380",
+    "firebase_url": "https://jetpack-a3f9d.firebaseio.com",
+    "project_id": "jetpack-a3f9d",
+    "storage_bucket": "jetpack-a3f9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149413174380:android:c7cdd39173e79907",
+        "android_client_info": {
+          "package_name": "com.mahmod.battl.jetpack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149413174380-9hsqf0lj3j6q3q4m0o6rk4jpdtuv58er.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mahmod.battl.jetpack",
+            "certificate_hash": "26eb91b8e83679ade941214d90cd02e568a77a67"
+          }
+        },
+        {
+          "client_id": "149413174380-fck6h4e74aqrnrqdvnfbbo8cj3rjsdqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOiwkCFCTElcZqzAluroXgn8X2yxvSRfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149413174380-fck6h4e74aqrnrqdvnfbbo8cj3rjsdqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
