@@ -33,9 +33,9 @@ public class SettingsActivity extends AppCompatActivity {
     }*/
     public void goBack(View v) {
 
-
-        startActivity(new Intent(SettingsActivity.this,MainActivity.class));
         finish();
+        //startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+
     }
     @Override
     public boolean onSupportNavigateUp() {

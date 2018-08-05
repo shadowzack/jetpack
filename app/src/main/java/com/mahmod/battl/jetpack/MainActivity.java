@@ -1,16 +1,11 @@
 package com.mahmod.battl.jetpack;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -65,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAboutClicked(View v) {
         if (playSFX) {
-            effects.play(R.raw.menu);
+            effects.play(R.raw.effect);
         }
         startActivity(new Intent(MainActivity.this,AboutActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
     public void onSettingsClicked(View v) {
-        if (playSFX) effects.play(R.raw.menu);
+        if (playSFX) effects.play(R.raw.effect);
         startActivity(new Intent(MainActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
     public void onStartClicked(View v) {
-        if (playSFX) effects.play(R.raw.menu);
+        if (playSFX) effects.play(R.raw.effect);
         startActivity(new Intent(MainActivity.this,GameActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 

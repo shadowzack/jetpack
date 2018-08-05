@@ -1,11 +1,13 @@
 package com.mahmod.battl.jetpack;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -84,6 +86,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public boolean onTouchEvent(MotionEvent event)
     {
         if(event.getAction()==MotionEvent.ACTION_DOWN){
+            if(!player.getPlaying()){
+                if(event.getX()>=WIDTH -250 && event.getY()<=HEIGHT /9+10) {
+                    ((Activity) getContext()).finish();
+                }
+            }
             if(!player.getPlaying())
             {
                 player.setPlaying(true);
@@ -262,6 +269,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         if(!player.getPlaying())
         {
+
             Paint paint1 = new Paint();
             paint1.setColor(Color.WHITE);
             paint1.setTextSize(40);
@@ -272,9 +280,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             paint3.setColor(Color.WHITE);
             paint3.setTextSize(40);
             paint3.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-           canvas.drawText("MAIN MENU", WIDTH -240,  HEIGHT /9  , paint3);
+            canvas.drawText("MAIN MENU", WIDTH -240,  HEIGHT /10-20  , paint3);
 
-           canvas.drawText("BEST: " + best, WIDTH-240, HEIGHT - 10, paint3);
+            canvas.drawText("BEST: " + best, WIDTH-240, HEIGHT - 10, paint3);
 
             Paint paint2 = new Paint();
             paint2.setColor(Color.WHITE);

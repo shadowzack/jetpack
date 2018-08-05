@@ -1,5 +1,6 @@
 package com.mahmod.battl.jetpack;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,22 +33,23 @@ public class AboutActivity extends AppCompatActivity {
         About = findViewById(R.id.About);
         About.setText(" Jet Pack :Space Marine\n" +
                 "Version:1.00\n" +
-                "developer mahmod hasan\n" +
-                "Developed in the Introduction to Mobile Computing Course, 2018. Instructors: Dr. Amnon Dekel and Amir Uval.\n" +
+                "developer: mahmod hasan\n" +
+                "Developed in the Introduction to Mobile Computing Course, 2018.\n Instructors: Dr. Amnon Dekel and Amir Uval.\n" +
                 "© 2018 - The Dept. of Software Engineering, Shenkar: Engineering. Design. Art." +
                 "\n" +
                 "the app is simple press and KEEP holding to go up\n" +
                 "Release to go down \n" +
                 "score a better score than last time\n" +
+                "after passing your score rockets will get faster the more you continue\n" +
                 "HAVE FUN !!!\n");
 
 
     }
     public void goBack(View v) {
 
-
-        startActivity(new Intent(AboutActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK ));
         finish();
+        //startActivity(new Intent(AboutActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK ));
+        //finish();
     }
 
     @Override
