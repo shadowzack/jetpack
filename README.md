@@ -6,6 +6,8 @@ if the space marine crosses the top or bottom border you will lose .
 the goal is to reach a better score every game.
 after passing your previous score the game will get harder more rockets will be on the way and they will also be faster than the previous rockets ,rockets are shot randomly.
 in the main menu go to setting to change music volume or to disable SFX effects .
+## Open Beta
+[Open Beta](https://play.google.com/store/apps/details?id=com.mahmod.battl.jetpack)
 ## Architecture And Data Flow
 [Click Here to go to Architecture and Data Flow]( https://docs.google.com/document/d/1duEhr-1tbCmY6Ga9J5_5mXlDKZ3Cr-vg5gC0BWo7Lew/edit?usp=sharing"Architecture")
 ## UML diagrams - DATA FLOW
