@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.ndk.CrashlyticsNdk;
+
 import io.fabric.sdk.android.Fabric;
 
 
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected static boolean playSFX = true;
     //protected ImageView img;
 
-//    @Override
+    //    @Override
 //    public void onResume(){
 //        super.onResume();
 //        effects.run();
@@ -50,14 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         decor_View.setSystemUiVisibility(ui_Options);
-      //  requestWindowFeature(Window.FEATURE_NO_TITLE |Window.FEATURE_ACTION_BAR);
+        //  requestWindowFeature(Window.FEATURE_NO_TITLE |Window.FEATURE_ACTION_BAR);
 
         setContentView(R.layout.activity_main);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         SharedPreferences settings = getSharedPreferences(PreferenceManager.getDefaultSharedPreferencesName(this), MODE_PRIVATE);
-        if (effects == null ) effects = new MySFxRunnable(this);
-        if (musicPlayer == null) musicPlayer = new MyMusicRunnable(this,settings.getInt(getString(R.string.volume_key),100));
-        playSFX = settings.getBoolean(getString(R.string.pref_sfx_buttons),true);
+        if (effects == null) effects = new MySFxRunnable(this);
+        if (musicPlayer == null)
+            musicPlayer = new MyMusicRunnable(this, settings.getInt(getString(R.string.volume_key), 100));
+        playSFX = settings.getBoolean(getString(R.string.pref_sfx_buttons), true);
         effects.run();
         musicPlayer.run();
     }
@@ -66,17 +69,18 @@ public class MainActivity extends AppCompatActivity {
         if (playSFX) {
             effects.play(R.raw.effect);
         }
-        startActivity(new Intent(MainActivity.this,AboutActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-    }
-    public void onSettingsClicked(View v) {
-        if (playSFX) effects.play(R.raw.effect);
-        startActivity(new Intent(MainActivity.this,SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-    }
-    public void onStartClicked(View v) {
-        if (playSFX) effects.play(R.raw.effect);
-        startActivity(new Intent(MainActivity.this,GameActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(MainActivity.this, AboutActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
+    public void onSettingsClicked(View v) {
+        if (playSFX) effects.play(R.raw.effect);
+        startActivity(new Intent(MainActivity.this, SettingsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    public void onStartClicked(View v) {
+        if (playSFX) effects.play(R.raw.effect);
+        startActivity(new Intent(MainActivity.this, GameActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
 
 
 }

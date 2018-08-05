@@ -11,7 +11,7 @@ import com.crashlytics.android.ndk.CrashlyticsNdk;
 
 import io.fabric.sdk.android.Fabric;
 
-public class GameActivity extends Activity{
+public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

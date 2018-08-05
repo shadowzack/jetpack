@@ -14,7 +14,7 @@ public class MyMusicRunnable implements Runnable, MediaPlayer.OnCompletionListen
     float volume = 100;
     boolean musicIsPlaying = false;
 
-    public MyMusicRunnable(Context c,int volume) {
+    public MyMusicRunnable(Context c, int volume) {
         // be careful not to leak the activity context.
         // can keep the app context instead.
         this.volume = volume;
@@ -70,9 +70,9 @@ public class MyMusicRunnable implements Runnable, MediaPlayer.OnCompletionListen
 
     }
 
-    public void setVolume(float value){
+    public void setVolume(float value) {
         this.volume = value;
-        mPlayer.setVolume(value/100,value/100);
+        mPlayer.setVolume(value / 100, value / 100);
     }
 
 

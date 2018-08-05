@@ -50,6 +50,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
     }
+
     public void goBack(View v) {
 
         finish();

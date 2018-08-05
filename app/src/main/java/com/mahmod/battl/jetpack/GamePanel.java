@@ -22,8 +22,8 @@ import java.util.Random;
 
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
-    public static int WIDTH ;
-    public static int HEIGHT ;
+    public static int WIDTH;
+    public static int HEIGHT;
     public static final int MOVESPEED = -8;
     private long missileStartTime;
     private GameThread thread;
@@ -39,8 +39,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private SharedPreferencesManager prefManager;
 
 
-    public GamePanel(Context context)
-    {
+    public GamePanel(Context context) {
         super(context);
         getHolder().addCallback(this);
         setFocusable(true);
@@ -52,7 +51,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder){
+    public void surfaceCreated(SurfaceHolder holder) {
 
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.bg));
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.jet), 199, 99, 1);
@@ -63,23 +62,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         thread.start();
 
     }
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){}
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder){
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
         boolean retry = true;
         int counter = 0;
-        while(retry && counter<1000)
-        {
+        while (retry && counter < 1000) {
             counter++;
-            try{
+            try {
                 thread.setRunning(false);
                 thread.join();
                 retry = false;
                 thread = null;
 
-            }catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
                 FirebaseCrash.log("Caught an exception:GamePanel thread Join ");
                 FirebaseCrash.report(e);
@@ -90,27 +90,22 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
-        if(event.getAction()==MotionEvent.ACTION_DOWN){
-            if(!player.getPlaying()){
-                if(event.getX()>=WIDTH -250 && event.getY()<=HEIGHT /9+10) {
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (!player.getPlaying()) {
+                if (event.getX() >= WIDTH - 250 && event.getY() <= HEIGHT / 9 + 10) {
                     ((Activity) getContext()).finish();
                 }
             }
-            if(!player.getPlaying())
-            {
+            if (!player.getPlaying()) {
                 player.setPlaying(true);
                 player.setUp(true);
-            }
-            else
-            {
+            } else {
                 player.setUp(true);
             }
             return true;
         }
-        if(event.getAction()==MotionEvent.ACTION_UP)
-        {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
             player.setUp(false);
             return true;
         }
@@ -121,120 +116,103 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public void update()
 
     {
-        if(player.getPlaying()) {
+        if (player.getPlaying()) {
 
             bg.update();
             player.update();
 
             //add missiles on timer
-            long missileElapsed = (System.nanoTime()-missileStartTime)/1000000;
-            if(missileElapsed >(2000 - player.getScore()/4)){
+            long missileElapsed = (System.nanoTime() - missileStartTime) / 1000000;
+            if (missileElapsed > (2000 - player.getScore() / 4)) {
 
                 //first missile always goes down the middle
-                if(rockets.size()==0)
-                {
-                    rockets.add(new Rocket(BitmapFactory.decodeResource(getResources(),R.drawable.
-                            missile),WIDTH + 10, HEIGHT/2, 45, 15, player.getScore(), 13));
-                }
-                else
-                {
+                if (rockets.size() == 0) {
+                    rockets.add(new Rocket(BitmapFactory.decodeResource(getResources(), R.drawable.
+                            missile), WIDTH + 10, HEIGHT / 2, 45, 15, player.getScore(), 13));
+                } else {
 
-                    rockets.add(new Rocket(BitmapFactory.decodeResource(getResources(),R.drawable.missile),
-                            WIDTH+10, (int)(rand.nextDouble()*(HEIGHT - (maxBorderHeight * 2))+maxBorderHeight),45,15, player.getScore(),13));
+                    rockets.add(new Rocket(BitmapFactory.decodeResource(getResources(), R.drawable.missile),
+                            WIDTH + 10, (int) (rand.nextDouble() * (HEIGHT - (maxBorderHeight * 2)) + maxBorderHeight), 45, 15, player.getScore(), 13));
                 }
 
                 //reset timer
                 missileStartTime = System.nanoTime();
             }
 
-            if(player.getY() <= -50 || player.getY() >= HEIGHT) {
+            if (player.getY() <= -50 || player.getY() >= HEIGHT) {
                 System.out.println("The player crossed the borders" + player.getY());
                 try {
                     Thread.sleep(750);
-                }
-
-                catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                     FirebaseCrash.log("Caught an exception:GamePanel thread sleep ");
                     FirebaseCrash.report(e);
-                }
-
-                finally {
+                } finally {
                     player.setPlaying(false);
                 }
             }
 
             //loop through every missile and check collision and remove
-            for(int i = 0; i< rockets.size();i++)
-            {
+            for (int i = 0; i < rockets.size(); i++) {
                 //update missile
                 rockets.get(i).update();
 
-                if(collision(rockets.get(i),player))
-                {
+                if (collision(rockets.get(i), player)) {
                     try {
                         Thread.sleep(750);
-                    }
-
-                    catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                         FirebaseCrash.log("Caught an exception:GamePanel thread sleep  ");
                         FirebaseCrash.report(e);
-                    }
-
-                    finally {
+                    } finally {
                         rockets.remove(i);
                         player.setPlaying(false);
                     }
 //                    break;
                 }
                 //remove missile if it is way off the screen
-                if(rockets.get(i).getX()<-100)
-                {
+                if (rockets.get(i).getX() < -100) {
                     rockets.remove(i);
                     break;
                 }
             }
-        }
-        else{
+        } else {
             newGameCreated = false;
-            if(!newGameCreated) {
+            if (!newGameCreated) {
                 newGame();
             }
         }
     }
-    public boolean collision(GameObject a, GameObject b)
-    {
-        if(Rect.intersects(a.getRectangle(), b.getRectangle()))
-        {
+
+    public boolean collision(GameObject a, GameObject b) {
+        if (Rect.intersects(a.getRectangle(), b.getRectangle())) {
             return true;
         }
 
         return false;
     }
-    @Override
-    public void draw(Canvas canvas)
-    {
-        super.draw(canvas);
-        final float scaleFactorX = getWidth()/(WIDTH*1.f);
-        final float scaleFactorY = getHeight()/(HEIGHT*1.f);
 
-        if(canvas!=null) {
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        final float scaleFactorX = getWidth() / (WIDTH * 1.f);
+        final float scaleFactorY = getHeight() / (HEIGHT * 1.f);
+
+        if (canvas != null) {
             final int savedState = canvas.save();
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
             player.draw(canvas);
 
             //draw missiles
-            for(Rocket m: rockets)
-            {
+            for (Rocket m : rockets) {
                 m.draw(canvas);
             }
 
-            if(player.getScore() > best) {
+            if (player.getScore() > best) {
                 final int currentScore = player.getScore();
                 final int oldBest = (best + 100);
-                if(currentScore < oldBest && best != 0)
+                if (currentScore < oldBest && best != 0)
                     drawMessage(canvas, "New HeightScore!");
             }
 
@@ -243,15 +221,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public void newGame()
-    {
-        if(player.getScore() > best) {
+    public void newGame() {
+        if (player.getScore() > best) {
             try {
                 best = player.getScore();
                 prefManager.add(SharedPreferencesManager.PREF_BEST_SCORE, best);
-            }
-
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 FirebaseCrash.log("Caught an exception:GamePanel prefManger ");
                 FirebaseCrash.report(e);
@@ -265,13 +240,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         player.resetDYA();
         player.resetScore();
-        player.setY(HEIGHT/2);
+        player.setY(HEIGHT / 2);
 
         newGameCreated = true;
     }
 
-    public void drawText(Canvas canvas)
-    {
+    public void drawText(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(40);
@@ -280,28 +254,27 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         canvas.drawText("DISTANCE: " + player.getScore(), 10, HEIGHT - 10, paint);
 
 
-        if(!player.getPlaying())
-        {
+        if (!player.getPlaying()) {
 
             Paint paint1 = new Paint();
             paint1.setColor(Color.WHITE);
             paint1.setTextSize(40);
             paint1.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            canvas.drawText("JETPACK:SPACE MARINE", WIDTH / 2-200 , HEIGHT / 2, paint1);
+            canvas.drawText("JETPACK:SPACE MARINE", WIDTH / 2 - 200, HEIGHT / 2, paint1);
 
             Paint paint3 = new Paint();
             paint3.setColor(Color.WHITE);
             paint3.setTextSize(40);
             paint3.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            canvas.drawText("MAIN MENU", WIDTH -240,  HEIGHT /10-20  , paint3);
+            canvas.drawText("MAIN MENU", WIDTH - 240, HEIGHT / 10 - 20, paint3);
 
-            canvas.drawText("BEST: " + best, WIDTH-240, HEIGHT - 10, paint3);
+            canvas.drawText("BEST: " + best, WIDTH - 240, HEIGHT - 10, paint3);
 
             Paint paint2 = new Paint();
             paint2.setColor(Color.WHITE);
             paint2.setTextSize(30);
             paint2.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            canvas.drawText("PRESS AND HOLD TO GO UP", WIDTH/2-200, HEIGHT/2+10 + 30, paint2);
+            canvas.drawText("PRESS AND HOLD TO GO UP", WIDTH / 2 - 200, HEIGHT / 2 + 10 + 30, paint2);
         }
     }
 

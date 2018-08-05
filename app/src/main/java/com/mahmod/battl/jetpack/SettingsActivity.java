@@ -33,16 +33,17 @@ public class SettingsActivity extends AppCompatActivity {
             getFragmentManager().beginTransaction().add(android.R.id.content, new SettingsFragment()).commit();
     }
 
-   /* public void goBack(View v) {
+    /* public void goBack(View v) {
 
-        startActivity(new Intent(SettingsActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK ));
-    }*/
+         startActivity(new Intent(SettingsActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK ));
+     }*/
     public void goBack(View v) {
 
         finish();
         //startActivity(new Intent(SettingsActivity.this,MainActivity.class));
 
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -57,24 +58,25 @@ public class SettingsActivity extends AppCompatActivity {
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences);
         }
+
         @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
-        {
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             if (key.equals(getString(R.string.volume_key))) {
-                float volume = (float) sharedPreferences.getInt(key,100);
+                float volume = (float) sharedPreferences.getInt(key, 100);
                 MainActivity.musicPlayer.setVolume(volume);
-            }
-            else if (key.equals(getString(R.string.pref_sfx_buttons))) {
-                MainActivity.playSFX = sharedPreferences.getBoolean(key,true);
+            } else if (key.equals(getString(R.string.pref_sfx_buttons))) {
+                MainActivity.playSFX = sharedPreferences.getBoolean(key, true);
             }
 
         }
+
         @Override
         public void onResume() {
             super.onResume();
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         }
+
         @Override
         public void onPause() {
             getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);

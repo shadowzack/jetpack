@@ -21,13 +21,11 @@ public class SharedPreferencesManager {
     }
 
     public void add(String name, int value) {
-        try  {
+        try {
             SharedPreferences.Editor prefEditor = preferences.edit();
             prefEditor.putInt(name, value);
             prefEditor.commit();
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             FirebaseCrash.log("Caught an exception:sharedPrefernceManger add  ");
             FirebaseCrash.report(e);
@@ -36,12 +34,10 @@ public class SharedPreferencesManager {
 
     public void initializeScore() {
         try {
-            if(get(SharedPreferencesManager.PREF_BEST_SCORE) == -1) {
+            if (get(SharedPreferencesManager.PREF_BEST_SCORE) == -1) {
                 add(SharedPreferencesManager.PREF_BEST_SCORE, 0);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             FirebaseCrash.log("Caught an exception:sharedPrefernceManger init  ");
             FirebaseCrash.report(e);
@@ -53,9 +49,7 @@ public class SharedPreferencesManager {
             SharedPreferences.Editor prefEditor = preferences.edit();
             prefEditor.remove(name);
             prefEditor.commit();
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             FirebaseCrash.log("Caught an exception:sharedPrefernceManger delete  ");
             FirebaseCrash.report(e);
