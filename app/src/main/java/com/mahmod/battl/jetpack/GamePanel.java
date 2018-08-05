@@ -20,8 +20,8 @@ import java.util.Random;
 
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
-    public static int WIDTH = 856;
-    public static int HEIGHT = 480;
+    public static int WIDTH ;
+    public static int HEIGHT ;
     public static final int MOVESPEED = -8;
     private long missileStartTime;
     private GameThread thread;
