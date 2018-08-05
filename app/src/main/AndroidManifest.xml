@@ -35,6 +35,10 @@
             android:theme="@style/AppTheme"
             android:screenOrientation="landscape"/>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e770d654936cbf5ffa07b5decbcddcff5f1bb448" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

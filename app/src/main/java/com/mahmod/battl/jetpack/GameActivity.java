@@ -6,11 +6,16 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.ndk.CrashlyticsNdk;
+
+import io.fabric.sdk.android.Fabric;
+
 public class GameActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         //Initialize player's best score
