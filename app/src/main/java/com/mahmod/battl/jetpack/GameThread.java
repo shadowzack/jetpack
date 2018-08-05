@@ -3,6 +3,8 @@ package com.mahmod.battl.jetpack;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class GameThread extends Thread {
     //maximum frames per second
     private int FPS = 60;
@@ -46,6 +48,9 @@ public class GameThread extends Thread {
                     this.gamePanel.draw(canvas);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
+                FirebaseCrash.log("Caught an exception:GameThread lock canvas ");
+                FirebaseCrash.report(e);
             }
             finally{
                 if(canvas!=null)
@@ -53,7 +58,11 @@ public class GameThread extends Thread {
                     try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
-                    catch(Exception e){e.printStackTrace();}
+                    catch(Exception e){
+                        e.printStackTrace();
+                        FirebaseCrash.log("Caught an exception:GameThread Unlock canvas ");
+                        FirebaseCrash.report(e);
+                    }
                 }
             }
 
@@ -65,7 +74,11 @@ public class GameThread extends Thread {
 
             try{
                 this.sleep(waitTime);
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+                FirebaseCrash.log("Caught an exception:GameThread sleep ");
+                FirebaseCrash.report(e);
+            }
 
             totalTime += System.nanoTime()-startTime;
             frameCount++;

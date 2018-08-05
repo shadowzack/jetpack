@@ -3,6 +3,8 @@ package com.mahmod.battl.jetpack;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.util.Random;
 
 public class Rocket extends GameObject {
@@ -47,6 +49,8 @@ public class Rocket extends GameObject {
             canvas.drawBitmap(framesAnimation.getImage(), x, y, null);
         } catch (Exception e) {
             e.printStackTrace();
+            FirebaseCrash.log("Caught an exception:rocket drawBitMap ");
+            FirebaseCrash.report(e);
         }
     }
 

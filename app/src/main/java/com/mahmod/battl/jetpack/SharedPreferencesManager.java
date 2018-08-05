@@ -3,6 +3,8 @@ package com.mahmod.battl.jetpack;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class SharedPreferencesManager {
 
     private Context context;
@@ -27,6 +29,8 @@ public class SharedPreferencesManager {
 
         catch (Exception e) {
             e.printStackTrace();
+            FirebaseCrash.log("Caught an exception:sharedPrefernceManger add  ");
+            FirebaseCrash.report(e);
         }
     }
 
@@ -39,6 +43,8 @@ public class SharedPreferencesManager {
 
         catch (Exception e) {
             e.printStackTrace();
+            FirebaseCrash.log("Caught an exception:sharedPrefernceManger init  ");
+            FirebaseCrash.report(e);
         }
     }
 
@@ -51,6 +57,8 @@ public class SharedPreferencesManager {
 
         catch (Exception e) {
             e.printStackTrace();
+            FirebaseCrash.log("Caught an exception:sharedPrefernceManger delete  ");
+            FirebaseCrash.report(e);
         }
     }
 

@@ -3,6 +3,8 @@ package com.mahmod.battl.jetpack;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class TopBorder extends GameObject {
     private Bitmap image;
 
@@ -27,6 +29,8 @@ public class TopBorder extends GameObject {
             canvas.drawBitmap(image, x, y, null);
         } catch (Exception e) {
             e.printStackTrace();
+            FirebaseCrash.log("Caught an exception:TopBorder drawBitMap ");
+            FirebaseCrash.report(e);
         }
     }
 }

@@ -15,6 +15,8 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.widget.Button;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -71,12 +73,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         while(retry && counter<1000)
         {
             counter++;
-            try{thread.setRunning(false);
+            try{
+                thread.setRunning(false);
                 thread.join();
                 retry = false;
                 thread = null;
 
-            }catch(InterruptedException e){e.printStackTrace();}
+            }catch(InterruptedException e){
+                e.printStackTrace();
+                FirebaseCrash.log("Caught an exception:GamePanel thread Join ");
+                FirebaseCrash.report(e);
+            }
 
         }
 
@@ -148,6 +155,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
                 catch (InterruptedException e) {
                     e.printStackTrace();
+                    FirebaseCrash.log("Caught an exception:GamePanel thread sleep ");
+                    FirebaseCrash.report(e);
                 }
 
                 finally {
@@ -169,6 +178,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
                     catch (InterruptedException e) {
                         e.printStackTrace();
+                        FirebaseCrash.log("Caught an exception:GamePanel thread sleep  ");
+                        FirebaseCrash.report(e);
                     }
 
                     finally {
@@ -242,6 +253,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
             catch (Exception e) {
                 e.printStackTrace();
+                FirebaseCrash.log("Caught an exception:GamePanel prefManger ");
+                FirebaseCrash.report(e);
             }
         }
 

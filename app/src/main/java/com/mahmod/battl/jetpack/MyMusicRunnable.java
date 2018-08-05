@@ -4,6 +4,8 @@ package com.mahmod.battl.jetpack;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.io.IOException;
 
 public class MyMusicRunnable implements Runnable, MediaPlayer.OnCompletionListener {
@@ -59,6 +61,8 @@ public class MyMusicRunnable implements Runnable, MediaPlayer.OnCompletionListen
                     mPlayer.start();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    FirebaseCrash.log("Caught an exception:music runnable prepare and start ");
+                    FirebaseCrash.report(e);
                 }
             }
             musicIsPlaying = true;
