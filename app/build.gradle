@@ -21,8 +21,8 @@ android {
         applicationId "com.mahmod.battl.jetpack"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-games:15.0.0'
 
     implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-applinks:[4,5)'
 }
 
 

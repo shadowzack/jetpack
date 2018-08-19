@@ -86,7 +86,7 @@ public class Player extends GameObject {
             dy = -14;
         }
 
-        y += dy * 0.5;
+        y += dy * 0.6;
     }
 
     public void draw(Canvas canvas) {

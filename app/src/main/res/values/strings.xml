@@ -6,4 +6,6 @@
     <string name="sfx_buttons">SFX Buttons</string>
     <string name="volume_key">volume_player</string>
     <string name="pref_sfx_buttons">pref_sfx_buttons</string>
+    <string name="privacy_policy"><a href='https://game-arts-privacy-policy.herokuapp.com/'>privacy policy</a></string>
+    <string name="facebook_app_id">845496142236478</string>
 </resources>

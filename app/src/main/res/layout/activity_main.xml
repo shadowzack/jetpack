@@ -124,6 +124,13 @@
         android:background="#ffffff"
         android:visibility="gone"
         />
+    <com.facebook.share.widget.ShareButton
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:id="@+id/fb_share_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ScrollView
         android:layout_width="160dp"
