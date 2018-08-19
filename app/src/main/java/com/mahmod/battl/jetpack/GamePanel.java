@@ -15,6 +15,8 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.widget.Button;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.games.Games;
 import com.google.firebase.crash.FirebaseCrash;
 
 import java.util.ArrayList;
@@ -37,10 +39,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private int progress = 20; //progression
     private int best;
     private SharedPreferencesManager prefManager;
-
+    private Context parent_contex;
 
     public GamePanel(Context context) {
         super(context);
+        parent_contex=context;
         getHolder().addCallback(this);
         setFocusable(true);
         this.prefManager = new SharedPreferencesManager(getContext());
@@ -226,6 +229,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             try {
                 best = player.getScore();
                 prefManager.add(SharedPreferencesManager.PREF_BEST_SCORE, best);
+              /*  Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                        .submitScore(getString(R.string.leaderboard_id), 1337);*/
             } catch (Exception e) {
                 e.printStackTrace();
                 FirebaseCrash.log("Caught an exception:GamePanel prefManger ");
