@@ -26,7 +26,7 @@ in the main menu go to setting to change music volume or to disable SFX effects 
 -   **Quality of animations** 
 -   **Background music** 
 -   **Crash reporting by fabric or google fire base** 
-- **Bonus:** 
+- **Bonus:(that i did)** 
 -   User engagement: facebook integration added the ability to share the fame score on facebook with share badge and game link.
     
 -   User engagement: User Login with Google.
@@ -39,6 +39,7 @@ in the main menu go to setting to change music volume or to disable SFX effects 
 
 ## website
 #### [Game WebSite](https://play.google.com/store/apps/details?id=com.mahmod.battl.jetpack)
+**[Privacy Policy](https://game-arts-privacy-policy.herokuapp.com/)**
 ## Game Pictures 
 **![](https://lh5.googleusercontent.com/f4t4Rdcm3Y8na-eQKsagTlcwWJAXMfqAXbgIfJkndaytyI_-UHyQpBOv4xuSpoq0TF48Gb8vSqWtnT9YInHVmbyoqSZi8bFVlKhrliWuJtsekWNf-eK5541LURgvxnY1UolihsNP)**
 **![](https://lh3.googleusercontent.com/7MBlqHoAytinYFXNIligBazKta07QCpQfTWhqByPnVhkYONQeUZ3N8H0VR-weI9e7fnQYb8drM3bo7tqwF4mWvGfU7DhNQfQNRnnkljwLoX4rnWYKaMQjrmPlBMhybSvzKbPQm6H)**
@@ -64,6 +65,6 @@ Jet Pack : Space Marine uses multiple resources thanks to :
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA1MDc4MzIyLC0xNzkzMTAwMTAwLDQyND
+eyJoaXN0b3J5IjpbNzAxMTg3MTE0LC0xNzkzMTAwMTAwLDQyND
 QxODUxNV19
 -->
