@@ -38,7 +38,7 @@ in the main menu go to setting to change music volume or to disable SFX effects 
 -   admob banner (google ads integration)
 
 ## website
-#### [Game WebSite](https://play.google.com/store/apps/details?id=com.mahmod.battl.jetpack)
+**[Game WebSite](https://jet-pack-space-marine.herokuapp.com/)**
 **[Privacy Policy](https://game-arts-privacy-policy.herokuapp.com/)**
 ## Game Pictures 
 **![](https://lh5.googleusercontent.com/f4t4Rdcm3Y8na-eQKsagTlcwWJAXMfqAXbgIfJkndaytyI_-UHyQpBOv4xuSpoq0TF48Gb8vSqWtnT9YInHVmbyoqSZi8bFVlKhrliWuJtsekWNf-eK5541LURgvxnY1UolihsNP)**
@@ -65,5 +65,5 @@ Jet Pack : Space Marine uses multiple resources thanks to :
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAxMTg3MTE0XX0=
+eyJoaXN0b3J5IjpbLTE0MzI5NDE3OTldfQ==
 -->
