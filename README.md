@@ -6,8 +6,8 @@ if the space marine crosses the top or bottom border you will lose .
 the goal is to reach a better score every game.
 after passing your previous score the game will get harder more rockets will be on the way and they will also be faster than the previous rockets ,rockets are shot randomly.
 in the main menu go to setting to change music volume or to disable SFX effects .
-## Open Beta
-[Open Beta](https://play.google.com/store/apps/details?id=com.mahmod.battl.jetpack)
+## Production (Was Open Beta)
+[Prod](https://play.google.com/store/apps/details?id=com.mahmod.battl.jetpack)
 ## Architecture And Data Flow
 [Click Here to go to Architecture and Data Flow]( https://docs.google.com/document/d/1duEhr-1tbCmY6Ga9J5_5mXlDKZ3Cr-vg5gC0BWo7Lew/edit?usp=sharing"Architecture")
 ## UML diagrams - DATA FLOW
@@ -26,7 +26,18 @@ in the main menu go to setting to change music volume or to disable SFX effects 
 -   **Quality of animations** 
 -   **Background music** 
 -   **Crash reporting by fabric or google fire base** 
-
+- **Bonus:** 
+-   User engagement: facebook integration added the ability to share the fame score on facebook with share badge and game link.
+    
+-   User engagement: User Login with Google.
+    
+-   Google Play store: move the app to production.
+    
+-   Google Play store: slightly better graphics and the game feels smother now.
+    
+-   Backend server: a nice landing page
+    
+-   admob banner (google ads integration)
 ## Game Pictures 
 **![](https://lh6.googleusercontent.com/a7TCR2mXpnlWLoA_KlpiIoSHy9PCdSsR3K1P-kB1gVM3-2EqSYjDpVNGaOhuGHhIkY_CgbR29Pjv0UIwzgBi6SNcNxShXW_l6TvI8iLM8uTg1_THJVa4HYW0DG8kj7I5ok0PTBOr)**
 **![](https://lh5.googleusercontent.com/EFX23fkhp-H9-ils0qZJaneSWELhTy9aerQqCMEuPYBvj4sIb5JeRiC6zPw4bjGsRzMh16euswyisGn4LnLIIRUP2fJ86bIZKEZ0Tmt9mVPHkJLRC6OauW_0ZBNd36XNf9QE9sDh)**
@@ -51,5 +62,5 @@ Jet Pack : Space Marine uses multiple resources thanks to :
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMDUxNTI0MCw0MjQ0MTg1MTVdfQ==
+eyJoaXN0b3J5IjpbMTg5MTE1NTAzMSw0MjQ0MTg1MTVdfQ==
 -->
